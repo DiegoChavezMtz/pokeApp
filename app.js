@@ -1,16 +1,19 @@
+
 //Atributos poke rival
-const imgRival = document.querySelector();
-const nombreRival = document.querySelector();
-const tipo1Rival = document.querySelector();
-const tipo2Rival = document.querySelector();
-const atkFisRival = document.querySelector(); 
-const atkEspRival = document.querySelector();
-const vidaRival = document.querySelector();
-const defensaEspRival = document.querySelector();
-const defensaFisRival = document.querySelector();
-const velocidadRival = document.querySelector();
+const imgRival = document.querySelector('#pokeRival');
+const nombreRival = document.querySelector('#nombreRival');
+const tipo1Rival = document.querySelector('#tipo1Rival');
+const tipo2Rival = document.querySelector('#tipo2Rival');
+const atkFisRival = document.querySelector('#ataqueFisRival'); 
+const atkEspRival = document.querySelector('#ataqueEspRival');
+const vidaRival = document.querySelector('#vidaRival');
+const defensaEspRival = document.querySelector('#defensaEspRival');
+const defensaFisRival = document.querySelector('#defensaFisRival');
+const velocidadRival = document.querySelector('#velocidadRival');
 
 //Atributos poke propio
+
+const imgPropio = document.querySelector('#pokePropio');
 
 //Interfaz de usuario
 
@@ -30,10 +33,12 @@ const getNumRandom = () => {
 //Se elegirá un pokemon pero solo del tipo fantasma, el tipo de elección del pokemon queda a criterio del desarrollador, que sea divertido.
 const obtenerPokePropio = ()=>{
     const num = input.value;
-
+    
     axios.get(`https://pokeapi.co/api/v2/pokemon/${num}`).then((res)=>{
+        console.log(res);
         return res.data
     }).then((res)=>{
+        imgPropio.setAttribute('src',res.sprites.back_default);
         console.log(res);
     })
 }
@@ -43,8 +48,19 @@ const obtenerPokeRival = () =>{
     const numPokeRival = getNumRandom();
 
     axios.get(`https://pokeapi.co/api/v2/pokemon/${numPokeRival}`).then((res)=>{
+        console.log(res)
         return res.data
     }).then((res)=>{
+        imgRival.setAttribute('src',res.sprites.front_default);
+        nombreRival.innerHTML = res.name;
+        tipo1Rival.innerHTML = res.types[0].type.name;
+        tipo1Rival.innerHTML = res.types[1].type.name;
+        atkFisRival.innerHTML = res.stats[1].base_stat;
+        atkEspRival.innerHTML = res.stats[3].base_stat;
+        vidaRival.innerHTML = res.stats[0].base_stat;
+        defensaEspRival.innerHTML = res.stats[4].base_stat;
+        defensaFisRival.innerHTML = res.stats[2].base_stat;
+        velocidadRival.innerHTML = res.stats[5].base_stat;
         console.log(res);
     })
 }

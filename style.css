@@ -5,15 +5,15 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
-#poke{
+#pokePropio{
     height: 150px;
     position: fixed;
-    top: 430px;
+    top: 347px;
     left: 100px;
 }
-#poke2{
+#pokeRival{
     height: 150px;
     position: fixed;
-    top: 370px;
+    top: 319px;
     left: 300px;
 }
